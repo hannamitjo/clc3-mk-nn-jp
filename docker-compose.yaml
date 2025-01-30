@@ -1,0 +1,31 @@
+services:
+  clcdummyclient:
+    container_name: DummyClient
+    build: .
+    ports:
+      - 8501:8501
+    networks:
+      - clcnetwork
+    environment:
+      - MINIO_HOST=DummyDB:9090
+    depends_on:
+      - clcdummydb
+  
+  clcdummydb:
+    container_name: DummyDB
+    image: minio/minio:latest
+    ports:
+      - 9090:9090
+      - 9091:9091
+    volumes:
+      - ./data:/data
+    environment:
+      MINIO_ROOT_USER: test
+      MINIO_ROOT_PASSWORD: test12345
+    command: server --address ":9090" --console-address ":9091" /data
+    networks:
+      - clcnetwork
+
+
+networks:
+  clcnetwork:
