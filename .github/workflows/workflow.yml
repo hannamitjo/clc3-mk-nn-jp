@@ -47,7 +47,10 @@ jobs:
       - name: Configure Docker Authentication
         run: |
           gcloud auth configure-docker ${{ env.GAR_LOCATION }}-docker.pkg.dev
-      
+      - name: Check cluster connection
+        run: |
+          kubectl cluster-info
+          
       # Build the Docker image
       - name: 'Build and push Docker container'
         run: |-
