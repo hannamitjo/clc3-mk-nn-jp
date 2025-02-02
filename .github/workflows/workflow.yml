@@ -28,15 +28,10 @@ jobs:
       - name: 'Checkout'
         uses: 'actions/checkout@v4' # actions/checkout@v4
 
-      
-
-      - name: Authenticate to Google Cloud
-        env:
-          GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
-        run: |
-          echo "$GCLOUD_SERVICE_KEY" > key.json
-          gcloud auth activate-service-account --key-file=key.json
-          # gcloud config set project $(jq -r '.project_id' key.json)
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
       - name: Debug Service Account
         run: |
