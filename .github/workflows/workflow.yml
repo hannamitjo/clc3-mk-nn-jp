@@ -46,7 +46,7 @@ jobs:
 
       - name: Configure Docker Authentication
         run: |
-          gcloud auth configure-docker ${GAR_LOCATION}.pkg.dev 
+          gcloud auth configure-docker ${GAR_LOCATION}
       
       # Build the Docker image
       - name: 'Build and push Docker container'
