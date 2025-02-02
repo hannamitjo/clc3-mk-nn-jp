@@ -3,11 +3,11 @@ import urllib3
 import os
 import logging
 
-BUCKET_NAME = "dummybucket"
+BUCKET_NAME = os.getenv("MINIO_BUCKET_NAME")
 LOGGER = logging.Logger(__name__)
 
 def _get_client() -> Minio:
-    client = Minio(os.getenv("MINIO_HOST"), "test", "test12345", secure=False)
+    client = Minio(os.getenv("MINIO_HOST"), os.getenv("MINIO_ROOT_USER"), os.getenv("MINIO_ROOT_PASSWORD"), secure=False)
     found = client.bucket_exists(BUCKET_NAME)
     if not found:
         client.make_bucket(BUCKET_NAME)
