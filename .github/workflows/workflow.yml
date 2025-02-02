@@ -51,10 +51,6 @@ jobs:
       - name: Set up Kubernetes credentials
         run: |
           gcloud container clusters get-credentials streamlit-cluster --region europe-central2 --project clc3v2-mk-nn-jp
-
-      - name: Check cluster connection
-        run: |
-          kubectl cluster-info
           
       # Build the Docker image
       - name: 'Build and push Docker container'
