@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "$GCLOUD_SERVICE_KEY" > key.json
           gcloud auth activate-service-account --key-file=key.json
-          gcloud config set project $(jq -r '.project_id' key.json)
+          # gcloud config set project $(jq -r '.project_id' key.json)
 
       - name: Debug Service Account
         run: |
