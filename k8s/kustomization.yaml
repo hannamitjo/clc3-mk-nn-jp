@@ -4,7 +4,7 @@ resources:
   - service.yaml
 
 images:
-  - name: europe-central2-docker.pkg.dev/clc3v2-mk-nn-jp/clc/static-site
+  - name: 
     newName: europe-central2-docker.pkg.dev/clc3v2-mk-nn-jp/clc/static-site
     newTag: latest
 
