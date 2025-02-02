@@ -29,7 +29,7 @@ jobs:
         uses: 'actions/checkout@v4' # actions/checkout@v4
 
       - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v1
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
@@ -43,10 +43,12 @@ jobs:
         run: |
           gcloud auth configure-docker ${{ env.GAR_LOCATION }}-docker.pkg.dev
 
-      - name: Set up Kubernetes credentials
-        run: |
-          gcloud container clusters get-credentials streamlit-cluster --region europe-central2 --project clc3v2-mk-nn-jp
-          
+      # Get the GKE credentials so we can deploy to the cluster
+      - name: Set up GKE credentials
+        uses: google-github-actions/get-gke-credentials@v0
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          location: ${{ env.GKE_ZONE }}
       # Build the Docker image
       - name: 'Build and push Docker container'
         run: |-
@@ -59,8 +61,6 @@ jobs:
             .
 
           docker push "${DOCKER_TAG}"
-      - name: 'Install GKE component'
-        run: apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
         
       # Set up kustomize
       - name: 'Set up Kustomize'
