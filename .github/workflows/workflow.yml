@@ -10,7 +10,7 @@ env:
   GAR_LOCATION: 'europe-central2'
   GKE_CLUSTER: 'streamlit-cluster'
   GKE_ZONE: 'europe-central2'
-  DEPLOYMENT_NAME: 'clc-streamlit-deployment'
+  DEPLOYMENT_NAME: 'my-app'
   REPOSITORY: 'clc'
   IMAGE: 'static-site'
 
