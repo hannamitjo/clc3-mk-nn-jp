@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clcdummydb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clcdummydb
+  template:
+    metadata:
+      labels:
+        app: clcdummydb
+    spec:
+      containers:
+        - name: clcdummydb
+          image: minio/minio:latest
+          ports:
+            - containerPort: 9090
+            - containerPort: 9091
+          volumeMounts:
+            - name: minio-storage
+              mountPath: "/data"
+          env:
+            - name: MINIO_ROOT_USER
+              value: "test"
+            - name: MINIO_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secret
+                  key: password
+          command: ["minio", "server", "--address", ":9090", "--console-address", ":9091", "/data"]
+      volumes:
+        - name: minio-storage
+          persistentVolumeClaim:
+            claimName: minio-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: clcdummydb
+spec:
+  selector:
+    app: clcdummydb
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090
+    - protocol: TCP
+      port: 9091
+      targetPort: 9091
+  type: ClusterIP
