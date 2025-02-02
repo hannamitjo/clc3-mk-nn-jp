@@ -46,12 +46,12 @@ jobs:
 
       - name: Configure Docker Authentication
         run: |
-          gcloud auth configure-docker ${{ env.GAR_LOCATION }}-docker.pkg.dev
+          gcloud auth configure-docker ${{ env.GAR_LOCATION }}
       
       # Build the Docker image
       - name: 'Build and push Docker container'
         run: |-
-          DOCKER_TAG="${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMAGE}:${GITHUB_SHA}"
+          DOCKER_TAG="${GAR_LOCATION}/${PROJECT_ID}/${REPOSITORY}/${IMAGE}:${GITHUB_SHA}"
 
           docker build \
             --tag "${DOCKER_TAG}" \
