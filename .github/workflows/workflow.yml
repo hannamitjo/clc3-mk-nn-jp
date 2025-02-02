@@ -28,6 +28,8 @@ jobs:
       - name: 'Checkout'
         uses: 'actions/checkout@v4' # actions/checkout@v4
 
+      
+
       - name: Authenticate to Google Cloud
         env:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
@@ -35,6 +37,12 @@ jobs:
           echo "$GCLOUD_SERVICE_KEY" > key.json
           gcloud auth activate-service-account --key-file=key.json
           gcloud config set project $(jq -r '.project_id' key.json)
+
+      - name: Debug Service Account
+        run: |
+          echo "Project ID from Key:"
+          jq '.project_id' key.json || echo "Could not read project_id"
+          gcloud config list
 
       - name: Configure Docker Authentication
         run: |
