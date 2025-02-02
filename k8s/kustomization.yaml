@@ -4,8 +4,6 @@ resources:
   - deployment.yaml
   - service.yaml
 
-namespace: mynamespace
-
 images:
   - name: 
     newName: europe-central2-docker.pkg.dev/clc3v2-mk-nn-jp/my-repo/my-app
