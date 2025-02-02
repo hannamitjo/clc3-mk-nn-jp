@@ -65,6 +65,11 @@ jobs:
 
           docker push "${DOCKER_TAG}"
 
+      - name: Install GKE GCloud Auth Plugin
+        run: |
+          gcloud components update
+          gcloud components install gke-gcloud-auth-plugin
+            
       # Set up kustomize
       - name: 'Set up Kustomize'
         run: |-
