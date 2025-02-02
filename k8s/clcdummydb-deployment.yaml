@@ -41,7 +41,7 @@ metadata:
   name: clcdummydb-service
 spec:
   selector:
-    app: clcdummydb
+    app: clcdummydb-service
   ports:
     - protocol: TCP
       port: 9090

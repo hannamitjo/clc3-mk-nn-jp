@@ -27,7 +27,7 @@ metadata:
   name: clcdummyclient-service
 spec:
   selector:
-    app: clcdummyclient
+    app: clcdummyclient-service
   ports:
     - protocol: TCP
       port: 8501
