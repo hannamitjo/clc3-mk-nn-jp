@@ -3,7 +3,7 @@ name: 'Build and Deploy to GKE'
 on:
   push:
     branches:
-      - '"main"'
+      - main
 
 env:
   PROJECT_ID: 'clc3v2-mk-nn-jp'
@@ -13,7 +13,6 @@ env:
   DEPLOYMENT_NAME: 'clc-streamlit-deployment'
   REPOSITORY: 'clc'
   IMAGE: 'static-site'
-  WORKLOAD_IDENTITY_PROVIDER: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider' # TODO: update to your workload identity provider
 
 jobs:
   setup-build-publish-deploy:
