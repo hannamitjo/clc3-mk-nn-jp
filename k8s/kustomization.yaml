@@ -6,6 +6,6 @@ resources:
 
 images:
   - name: my-app
-    newName: europe-central2-docker.pkg.dev/clc3v2-mk-nn-jp/my-repo/my-app
+    newName: europe-central2-docker.pkg.dev/clc3v2-mk-nn-jp/clc/static-site
     newTag: latest
 
