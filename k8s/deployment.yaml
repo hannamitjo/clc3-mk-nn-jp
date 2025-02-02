@@ -29,8 +29,8 @@ spec:
             - name: MINIO_SECRET_KEY
               value: "minioadmin"
             volumeMounts:
-            - name: minio-storage
-              mountPath: /data  # Dein App-Container kann auf MinIO-Daten zugreifen
+              - name: minio-storage
+                mountPath: /data  # Dein App-Container kann auf MinIO-Daten zugreifen
 
           - name: minio
             image: minio/minio:latest
