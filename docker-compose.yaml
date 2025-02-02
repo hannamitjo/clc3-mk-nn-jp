@@ -21,7 +21,7 @@ services:
       - ./data:/data
     environment:
       MINIO_ROOT_USER: test
-      MINIO_ROOT_PASSWORD: test12345
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     command: server --address ":9090" --console-address ":9091" /data
     networks:
       - clcnetwork
