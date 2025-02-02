@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "$GCLOUD_SERVICE_KEY" > key.json
           gcloud auth activate-service-account --key-file=key.json
-          gcloud config set project clc3-mm-nn-jp
+          gcloud config set project $(jq -r '.project_id' key.json)
 
       - name: Configure Docker Authentication
         run: |
