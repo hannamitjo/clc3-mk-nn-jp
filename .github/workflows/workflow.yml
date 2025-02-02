@@ -7,7 +7,7 @@ on:
 
 env:
   PROJECT_ID: 'clc3v2-mk-nn-jp'
-  GAR_LOCATION: 'us-central1'
+  GAR_LOCATION: 'europe-central2'
   GKE_CLUSTER: 'streamlit-cluster'
   GKE_ZONE: 'europe-central2'
   DEPLOYMENT_NAME: 'clc-streamlit-deployment'
