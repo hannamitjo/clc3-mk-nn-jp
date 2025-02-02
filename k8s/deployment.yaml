@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: europe-central2-docker.pkg.dev/clc3v2-mk-nn-jp/clc/static-site:latest # Deine Container-Registry
+          image: europe-central2-docker.pkg.dev/clc3v2-mk-nn-jp/clc/static-site
           ports:
             - containerPort: 8080
           env:
