@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: gcr.io/clc3-mm-nn-jp/my-app:latest  # Deine Container-Registry
+          image: gcr.io/clc3-mm-nn-jp/static-site:latest  # Deine Container-Registry
           ports:
             - containerPort: 8080
           env:
