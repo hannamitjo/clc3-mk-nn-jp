@@ -18,7 +18,7 @@ spec:
         - name: my-app
           image: europe-central2-docker.pkg.dev/clc3v2-mk-nn-jp/clc/static-site
           ports:
-            - containerPort: 8080
+            - containerPort: 8501
           env:
             - name: ENVIRONMENT
               value: "production"
