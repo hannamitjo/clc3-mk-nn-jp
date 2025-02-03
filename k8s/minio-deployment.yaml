@@ -20,8 +20,8 @@ spec:
             - /data
             - "--console-address=:9001"
           ports:
-            - containerPort: 9000  # S3 API Port
-            - containerPort: 9001  # Web UI Port
+            - containerPort: 9000
+            - containerPort: 9001
           env:
             - name: MINIO_ACCESS_KEY
               value: "minioadmin"
@@ -29,7 +29,7 @@ spec:
               value: "minioadmin"
           volumeMounts:
             - name: minio-storage
-              mountPath: /data  # Speicherort für Daten
+              mountPath: /data
       volumes:
         - name: minio-storage
-          emptyDir: {}  # Für lokale Tests (Ersetze durch PersistentVolume für Prod)
+          emptyDir: {}
