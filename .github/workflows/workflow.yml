@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_ID: 'clc3v2-mk-nn-jp'
   GAR_LOCATION: 'europe-central2'
-  GKE_CLUSTER: 'streamlit-cluster'
+  GKE_CLUSTER: 'streamlit-cluster1'
   GKE_ZONE: 'europe-central2'
   DEPLOYMENT_NAME: 'my-app'
   REPOSITORY: 'clc'
