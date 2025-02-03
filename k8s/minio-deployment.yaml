@@ -29,7 +29,7 @@ spec:
               value: "minioadmin"
           volumeMounts:
             - name: minio-storage
-              mountPath: /data  # Speicherort für Daten
+              mountPath: /data 
       volumes:
         - name: minio-storage
-          emptyDir: {}  # Für lokale Tests (Ersetze durch PersistentVolume für Prod)
+          emptyDir: {}

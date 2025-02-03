@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 resources:
-  - minio-deployment.yaml  # MinIO Deployment
+  - minio-deployment.yaml
   - minio-service.yaml 
-  - deployment.yaml        # Dein Streamlit Deployment
-  - service.yaml           # Dein Streamlit Service
+  - deployment.yaml 
+  - service.yaml
 
 images:
   - name: 
