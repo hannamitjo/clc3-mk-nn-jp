@@ -22,3 +22,9 @@ spec:
           env:
             - name: ENVIRONMENT
               value: "production"
+            - name: MINIO_ENDPOINT
+              value: "http://minio-service:9000"
+            - name: MINIO_ACCESS_KEY
+              value: "minioadmin"
+            - name: MINIO_SECRET_KEY
+              value: "minioadmin"
