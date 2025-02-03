@@ -35,6 +35,11 @@ def main():
                             on_click=delete_object,
                             kwargs={"filename": filename},
                             key=f"delete_button_{i}")
+                
+    info_text = '''This application can help with file organization. Files can easily be uploaded into a MINIO file storage. 
+    Once the files are needed, a download of the stored files can be triggerd via this web interface.'''
+
+    st.markdown(info_text)
 
 
 if __name__ == "__main__":
