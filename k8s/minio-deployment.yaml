@@ -24,9 +24,9 @@ spec:
             - containerPort: 9001
           env:
             - name: MINIO_ACCESS_KEY
-              value: "minioadmin"
+              value: ${MINIO_ROOT_USER}
             - name: MINIO_SECRET_KEY
-              value: "minioadmin"
+              value: ${MINIO_ROOT_PASSWORD}
           volumeMounts:
             - name: minio-storage
               mountPath: /data
