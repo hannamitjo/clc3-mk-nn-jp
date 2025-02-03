@@ -7,7 +7,7 @@ BUCKET_NAME = "dummybucket"
 LOGGER = logging.Logger(__name__)
 
 def _get_client() -> Minio:
-    client = Minio(os.getenv("MINIO_ENDPOINT"), os.getenv("MINIO_ACCESS_KEY"), os.geten("MINIO_SECRET_KEY"), secure=False)
+    client = Minio(os.getenv("MINIO_ENDPOINT"), os.getenv("MINIO_ACCESS_KEY"), os.getenv("MINIO_SECRET_KEY"), secure=False)
     found = client.bucket_exists(BUCKET_NAME)
     if not found:
         client.make_bucket(BUCKET_NAME)
