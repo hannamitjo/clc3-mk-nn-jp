@@ -52,7 +52,7 @@ jobs:
       # Build the Docker image
       - name: 'Build and push Docker container'
         run: |-
-          DOCKER_TAG="${{ env.GAR_LOCATION }}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMAGE}:${GITHUB_SHA}"
+          DOCKER_TAG="${{ env.GAR_LOCATION }}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMAGE}:latest"
 
           docker build \
             --tag "${DOCKER_TAG}" \
@@ -73,7 +73,7 @@ jobs:
         run: |-
           # replacing the image name in the k8s template
           cd k8s
-          ../kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA
+          ../kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:latest
           ../kustomize build . | kubectl apply -f - --validate=false
           kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
