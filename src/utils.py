@@ -4,6 +4,7 @@ import os
 import logging
 
 BUCKET_NAME = os.getenv("MINIO_BUCKET_NAME")
+BUCKET_NAME = os.getenv("MINIO_BUCKET_NAME")
 LOGGER = logging.Logger(__name__)
 
 def _get_client() -> Minio:
