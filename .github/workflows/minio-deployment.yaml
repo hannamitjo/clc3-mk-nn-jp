@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+        - name: minio
+          image: minio/minio:latest
+          args:
+            - server
+            - /data
+            - "--console-address=:9001"
+          ports:
+            - containerPort: 9000  # S3 API Port
+            - containerPort: 9001  # Web UI Port
+          env:
+            - name: MINIO_ACCESS_KEY
+              value: "minioadmin"
+            - name: MINIO_SECRET_KEY
+              value: "minioadmin"
+          volumeMounts:
+            - name: minio-storage
+              mountPath: /data  # Speicherort für Daten
+      volumes:
+        - name: minio-storage
+          emptyDir: {}  # Für lokale Tests (Ersetze durch PersistentVolume für Prod)
